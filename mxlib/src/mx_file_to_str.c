@@ -3,13 +3,15 @@
 char *mx_file_to_str(const char *file) {
     char* answer = NULL;
     char buffer;
-    int file_size = 0;
+    int file_size = -1;
     int descriptor = open(file, O_RDONLY);
 
     if (descriptor == -1)
         return NULL;
     while (read(descriptor, &buffer, 1) > 0)
         file_size++;
+    if (file_size <= 0)
+        return NULL;
 
     answer = mx_strnew(file_size);
     close(descriptor);
