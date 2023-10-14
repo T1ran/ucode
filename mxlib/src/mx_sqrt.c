@@ -8,9 +8,11 @@ int mx_sqrt(int x) {
     }
 
     while (answer <= x) {
-        if (answer * answer == x) {
+        if (answer == x / answer) {
             return answer;
         }
+        if (answer > x / answer)
+            break;
         answer++;
     }
 
