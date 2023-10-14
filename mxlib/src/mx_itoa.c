@@ -5,6 +5,11 @@ char *mx_itoa(int number) {
     int temp = number;
     int len = 1;
 
+    if (number == 0)
+        return "0";
+    if (number == MX_INT_MIN)
+        return "-2147483648";
+
     while (temp != 0) {
         temp /= 10;
         len++;

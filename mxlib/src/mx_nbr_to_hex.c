@@ -5,6 +5,9 @@ char *mx_nbr_to_hex(unsigned long nbr) {
     int len = 0;
     unsigned long temp = nbr;
 
+    if (nbr == 0)
+        return "0";
+
     while (temp != 0) {
         len++;
         temp /= 16;
