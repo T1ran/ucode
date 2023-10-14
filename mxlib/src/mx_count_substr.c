@@ -11,7 +11,7 @@ int mx_count_substr(const char* str, const char* sub) {
         sub_len++;
 
     if (sub_len == 0)
-        return -1;
+        return 0;
 
     while (*str) {
         int match = 1;
