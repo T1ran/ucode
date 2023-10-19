@@ -8,4 +8,6 @@ typedef struct s_pathfinder {
     int isl_count;
 }              t_pathfinder;
 
+void mx_shortestPathMatrix(int n, int graph[n][n]);
+
 #endif
