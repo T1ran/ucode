@@ -15,6 +15,20 @@ void showMatrix(int n, int **graph) {
     }
 }
 
+void showPaths(int n, char ***paths) {
+    printf("Shortest Paths between every pair of vertices:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (paths[i][j] == NULL) {
+                printf("INF\t\t");
+            } else {
+                printf("%s\t\t", paths[i][j]);
+            }
+        }
+        printf("\n");
+    }
+}
+
 int main(void) {
     int **matrix;
     matrix = (int **)malloc(8 * sizeof(int *));
@@ -38,8 +52,18 @@ int main(void) {
     t_pathfinder data;
     data.matrices.bridges = matrix;
     data.isl_count = 4;
+    data.islands = (char **)malloc(4 * sizeof(char *));
 
+    data.islands[0] = mx_strdup("Greenland");
+    data.islands[1] = mx_strdup("Bananal");
+    data.islands[2] = mx_strdup("Fraser");
+    data.islands[3] = mx_strdup("Java");
+    data.matrices.paths = (char ***)malloc(4 * sizeof(char **));
+    for(int i = 0; i < 4; ++i)
+        data.matrices.paths[i] = (char **)malloc(4 * sizeof(char *));
+    mx_setPaths(data);
     showMatrix(4, data.matrices.bridges);
+    showPaths(4, data.matrices.paths);
     mx_printstr("\n\n");
     mx_shortestPathMatrix(data);
     showMatrix(4, data.matrices.bridges);
