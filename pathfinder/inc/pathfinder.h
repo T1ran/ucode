@@ -3,20 +3,15 @@
 
 #include "../libmx/inc/libmx.h"
 
-typedef struct s_matrices {
-    int **bridges;
-    char ***paths;
-}              t_matrices;
-
 typedef struct s_pathfinder {
-    int fd;
     int isl_count;
     char **islands;
-    t_matrices matrices;
+    int **bridges;
+    char ***paths;
 }              t_pathfinder;
 
-
-void mx_shortestPathMatrix(t_pathfinder pathfinder);
-void mx_setPaths(t_pathfinder pathfinder);
+int mx_read_pathfinder(t_pathfinder *pathfinder, char *file);
+int mx_data_pathfinder(t_pathfinder *pathfinder, char *data);
+int mx_line_pathfinder(t_pathfinder *pathfinder, char *line);
 
 #endif
