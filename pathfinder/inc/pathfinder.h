@@ -9,11 +9,18 @@ typedef struct s_path {
     int bridge;
 }              t_path;
 
+typedef struct s_matrices {
+    int **bridges;
+    int ***paths;
+    int **path_size;
+}              t_matrices;
+
 typedef struct s_pathfinder {
     int isl_count;
     int path_count;
     char **islands;
     t_path **paths;
+    t_matrices matrices;
 }              t_pathfinder;
 
 void mx_printerr(char *error);
@@ -29,5 +36,7 @@ int mx_form_islands(t_pathfinder *pathfinder);
 void mx_found_isl(char ***islands, int *isl_count, char *island);
 int mx_check_dup(t_pathfinder *pathfinder);
 int mx_check_bridges(t_pathfinder *pathfinder);
+void mx_create_matrices(t_pathfinder *pathfinder);
+void mx_shortest_path(t_matrices matrices, int n);
 
 #endif

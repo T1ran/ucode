@@ -9,6 +9,9 @@ int main(int argc, char *argv[]) {
     pathfinder->path_count = 0;
     pathfinder->islands = NULL;
     pathfinder->paths = NULL;
+    pathfinder->matrices.paths = NULL;
+    pathfinder->matrices.bridges = NULL;
+
     if (mx_file_errors(argc, argv)) {
         free(pathfinder);
         return 0;
@@ -20,6 +23,7 @@ int main(int argc, char *argv[]) {
     }
 
     test = mx_itoa(mx_data_pathfinder(data, pathfinder));
+    free(data);
     if (*test != '0'){
         mx_printerr("error: line ");
         mx_printerr(test);
@@ -30,7 +34,6 @@ int main(int argc, char *argv[]) {
         mx_del_pathfinder(pathfinder);
         return 0;
     }
-    free(data);
     mx_calc_pathfinder(pathfinder);
     return 0;
 }
