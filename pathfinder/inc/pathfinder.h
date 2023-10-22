@@ -24,5 +24,10 @@ int mx_isalpha(char c);
 int mx_line_pathfinder(char **line, t_pathfinder *pathfinder);
 void mx_add_path(t_pathfinder *pathfinder, char *island1, char *island2, char *bridge);
 void mx_del_pathfinder(t_pathfinder *pathfinder);
+void mx_calc_pathfinder(t_pathfinder *pathfinder);
+int mx_form_islands(t_pathfinder *pathfinder);
+void mx_found_isl(char ***islands, int *isl_count, char *island);
+int mx_check_dup(t_pathfinder *pathfinder);
+int mx_check_bridges(t_pathfinder *pathfinder);
 
 #endif

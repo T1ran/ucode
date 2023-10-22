@@ -30,8 +30,7 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     free(data);
-    mx_del_pathfinder(pathfinder);
-    //free(pathfinder);
+    mx_calc_pathfinder(pathfinder);
     return 0;
 }
 
