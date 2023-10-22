@@ -29,9 +29,9 @@ int main(int argc, char *argv[]) {
         mx_del_pathfinder(pathfinder);
         return 0;
     }
-    free(test);
     free(data);
     mx_del_pathfinder(pathfinder);
+    //free(pathfinder);
     return 0;
 }
 
