@@ -17,7 +17,7 @@ void mx_add_path(t_pathfinder *pathfinder, char *island1, char *island2, char *b
 
     new_path->bridge = bridge_int;
 
-    pathfinder->paths = (t_path **)realloc(pathfinder->paths, sizeof(t_path *) * pathfinder->path_count);
+    pathfinder->paths = (t_path **)mx_realloc(pathfinder->paths, sizeof(t_path *) * pathfinder->path_count);
     if (pathfinder->paths == NULL) {
         free(new_path->island1);
         free(new_path->island2);
