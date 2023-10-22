@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
         mx_printerr(" is not valid \n");
         free(test);
         free(data);
+        pathfinder->isl_count = 0;
         mx_del_pathfinder(pathfinder);
         return 0;
     }
