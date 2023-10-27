@@ -11,6 +11,7 @@ typedef struct s_cell {
 
 typedef struct s_pathfinder {
     int islands_count;
+    int real_islands_count;
     char **islands;
     int paths_count;
     int **paths;
@@ -33,6 +34,5 @@ void mx_add_island(t_pathfinder *pathfinder, char *island);
 int mx_island_index(t_pathfinder *pathfinder, char *island);
 void mx_add_path(t_pathfinder *pathfinder, char *island1, char *island2, char *distance);
 
-int mx_check_islands(t_pathfinder *pathfinder);
 int mx_check_paths(t_pathfinder *pathfinder);
 #endif

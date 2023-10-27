@@ -17,15 +17,19 @@ void mx_pathfinder(int argc, char **argv) {
     if (test[0] != '0') {
         mx_print_error("error: line ");
         mx_print_error(test);
-        mx_print_error(" is not valid \n");
+        mx_print_error(" is not valid\n");
         free(text_data);
         free(test);
         mx_delete_pathfinder(pathfinder);
         return;
     }
     free(text_data);
-    if (!mx_check_islands(pathfinder)) {
-        mx_print_error("error: invalid number of islands");
+    if (pathfinder->islands_count != pathfinder->real_islands_count) {
+        mx_print_error("error: invalid number of islands\n");
+        mx_delete_pathfinder(pathfinder);
+        return;
+    }
+    if (mx_check_paths(pathfinder)) {
         mx_delete_pathfinder(pathfinder);
         return;
     }

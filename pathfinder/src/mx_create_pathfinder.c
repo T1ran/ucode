@@ -6,7 +6,7 @@ t_pathfinder *mx_create_pathfinder(void) {
     pathfinder->islands_count = 0;
 
     pathfinder->matrix = NULL;
-    pathfinder->islands = NULL;
+    pathfinder->islands = (char **)malloc(sizeof(char *));
     pathfinder->paths = NULL;
 
     return pathfinder;

@@ -19,15 +19,10 @@ int mx_line_pathfinder(t_pathfinder *pathfinder, char **line) {
 
     mx_add_island(pathfinder, island1);
     mx_add_island(pathfinder, island2);
-    //mx_add_path(pathfinder, island1, island2, distance);
+    mx_add_path(pathfinder, island1, island2, distance);
     free(island1);
     free(island2);
     free(distance);
-    if (pathfinder->islands[4] != NULL) {
-        mx_printstr(pathfinder->islands[4]);
-        mx_printstr("ABOBA");
-        mx_printchar('\n');
-    }
 
     return 0;
     pathfinder->islands_count = 0;
