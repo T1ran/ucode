@@ -1,64 +1,35 @@
 #include "../inc/pathfinder.h"
 
-int mx_line_pathfinder(char **line, t_pathfinder *pathfinder) {
-    char *temp1 = mx_strnew(0);
-    char *temp2 = mx_strnew(0);
-    char *temp3 = mx_strnew(0);
-    char temp[2] = " \0";
-
-    while (**line != '\n') {
-        if (**line == '-')
-            break;
-        if (!mx_isalpha(**line)) {
-            free(temp1);
-            free(temp2);
-            free(temp3);
-            return 1;
-        }
-        temp[0] = **line;
-        mx_strcat(temp1, temp);
-        ++*line;
-    }
-    ++*line;
-    while (**line != '\n') {
-        if (**line == ',')
-            break;
-        if (!mx_isalpha(**line)) {
-            free(temp1);
-            free(temp2);
-            free(temp3);
-            return 1;
-        }
-        temp[0] = **line;
-        mx_strcat(temp2, temp);
-        ++*line;
-    }
-    ++*line;
-    while (**line != '\n') {
-        if (**line == '\n')
-            break;
-        if (!mx_isdigit(**line)) {
-            free(temp1);
-            free(temp2);
-            free(temp3);
-            return 1;
-        }
-        temp[0] = **line;
-        mx_strcat(temp3, temp);
-        ++*line;
-    }
-    if (mx_strcmp("", temp1) == 0 || mx_strcmp("", temp2) == 0 || mx_strcmp(temp1, temp2) == 0) {
-        free(temp1);
-        free(temp2);
-        free(temp3);
+int mx_line_pathfinder(t_pathfinder *pathfinder, char **line) {
+    char *island1 = mx_strnew(0);
+    char *island2 = mx_strnew(0);
+    char *distance = mx_strnew(0);
+    
+    if (mx_read_till(&*line, island1, '-', mx_isalpha)
+        || mx_read_till(&*line, island2, ',', mx_isalpha)
+        || mx_read_till(&*line, distance, '\0', mx_isdigit)
+        || mx_strcmp("\0", island1) == 0
+        || mx_strcmp("\0", island2) == 0
+        || mx_strcmp(island1, island2) == 0) {
+        free(island1);
+        free(island2);
+        free(distance);
         return 1;
     }
 
-    mx_add_path(pathfinder, temp1, temp2, temp3);
-    free(temp1);
-    free(temp2);
-    free(temp3);
+    mx_add_island(pathfinder, island1);
+    mx_add_island(pathfinder, island2);
+    //mx_add_path(pathfinder, island1, island2, distance);
+    free(island1);
+    free(island2);
+    free(distance);
+    if (pathfinder->islands[4] != NULL) {
+        mx_printstr(pathfinder->islands[4]);
+        mx_printstr("ABOBA");
+        mx_printchar('\n');
+    }
 
     return 0;
+    pathfinder->islands_count = 0;
 }
 

@@ -10,9 +10,9 @@ char *mx_read_data(char *file) {
         ++file_size;
     if (file_size <= 1)
     {
-        mx_printerr("error: file ");
-        mx_printerr(file);
-        mx_printerr(" is empty\n");
+        mx_print_error("error: file ");
+        mx_print_error(file);
+        mx_print_error(" is empty\n");
         return NULL;
     }
     data = mx_strnew(file_size); 
@@ -30,4 +30,6 @@ char *mx_read_data(char *file) {
     close(fd);
 
     return data;
+
 }
+

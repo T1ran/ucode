@@ -1,24 +1,24 @@
 #include "../inc/pathfinder.h"
 
-void mx_add_path(t_pathfinder *pathfinder, char *island1, char *island2, char *bridge) {
-    int bridge_int = 0;
-    pathfinder->path_count += 1;
+void mx_add_path(t_pathfinder *pathfinder, char *island1, char *island2, char *distance) {
+    int index1 = mx_island_index(pathfinder, island1);
+    int index2 = mx_island_index(pathfinder, island2);
+    int distance_value = 0;
 
-    t_path *new_path = (t_path *)malloc(sizeof(t_path));
-    if (new_path == NULL) {
-        return;
-    }
+    for (int i = 0; i < mx_strlen(distance); ++i)
+        distance_value += (distance[i] - 48) * (int) mx_pow(10.0, (mx_strlen(distance) - i - 1));
 
-    new_path->island1 = mx_strdup(island1);
-    new_path->island2 = mx_strdup(island2);
+    int *new_path = (int *)malloc(3 * sizeof(int));
 
-    for (int i = 0; i < mx_strlen(bridge); ++i)
-        bridge_int += (bridge[i] - 48) * (int) mx_pow(10.0, (mx_strlen(bridge) - i - 1));
+    new_path[0] = index1;
+    new_path[1] = index2;
+    new_path[2] = distance_value;
 
-    new_path->bridge = bridge_int;
+    pathfinder->paths_count++;
+    int **new_paths = (int **)realloc(pathfinder->paths, pathfinder->paths_count * sizeof(int *));
 
-    pathfinder->paths = (t_path **)mx_realloc(pathfinder->paths, sizeof(t_path *) * pathfinder->path_count);
+    pathfinder->paths = new_paths;
+    pathfinder->paths[pathfinder->paths_count - 1] = new_path;
 
-    pathfinder->paths[pathfinder->path_count - 1] = new_path;
 }
 
