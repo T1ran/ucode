@@ -5,8 +5,11 @@
 
 typedef struct s_cell {
     int distance;
-    int paths_count;
-    int **data;
+    int children_num;
+    struct s_cell **children;
+    int src;
+    int dst;
+    int standart;
 }              t_cell;
 
 typedef struct s_pathfinder {
@@ -33,6 +36,16 @@ int mx_line_pathfinder(t_pathfinder *pathfinder, char **line);
 void mx_add_island(t_pathfinder *pathfinder, char *island);
 int mx_island_index(t_pathfinder *pathfinder, char *island);
 void mx_add_path(t_pathfinder *pathfinder, char *island1, char *island2, char *distance);
-
 int mx_check_paths(t_pathfinder *pathfinder);
+
+void mx_gen_matrix(t_pathfinder *pathfinder);
+void mx_calc_pathfinder(t_pathfinder *pathfinder);
+void mx_calc_cells(t_cell *cell_main, t_cell *cell1, t_cell *cell2);
+
+void mx_print_boundary(void);
+void mx_find_routes(t_cell *cell, int *path, int pathLen, int ***allPaths, int *numPaths, int *pathSizes);
+void mx_print_result(t_pathfinder *pathfinder);
+void mx_print_cell(t_cell cell, char **islands, t_cell **matrix);
+
 #endif
+

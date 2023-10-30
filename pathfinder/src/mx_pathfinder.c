@@ -33,6 +33,9 @@ void mx_pathfinder(int argc, char **argv) {
         mx_delete_pathfinder(pathfinder);
         return;
     }
+    mx_gen_matrix(pathfinder);
+    mx_calc_pathfinder(pathfinder);
+    mx_print_result(pathfinder);
     mx_delete_pathfinder(pathfinder);
 }
 

@@ -15,7 +15,7 @@ void mx_add_path(t_pathfinder *pathfinder, char *island1, char *island2, char *d
     new_path[2] = distance_value;
 
     pathfinder->paths_count++;
-    int **new_paths = (int **)realloc(pathfinder->paths, pathfinder->paths_count * sizeof(int *));
+    int **new_paths = (int **)mx_realloc(pathfinder->paths, pathfinder->paths_count * sizeof(int *));
 
     pathfinder->paths = new_paths;
     pathfinder->paths[pathfinder->paths_count - 1] = new_path;

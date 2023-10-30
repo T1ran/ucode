@@ -16,10 +16,8 @@ void mx_delete_pathfinder(t_pathfinder *pathfinder) {
     if (pathfinder->matrix != NULL) {
         for (int y = 0; y < pathfinder->islands_count; ++y) {
             for (int x = 0; x < pathfinder->islands_count; ++x) {
-                if (pathfinder->matrix[y][x].data != NULL) {
-                    for (int i = 0; pathfinder->matrix[y][x].data[i] != NULL; ++i)
-                        free(pathfinder->matrix[y][x].data[i]);
-                    free(pathfinder->matrix[y][x].data);
+                if (pathfinder->matrix[y][x].children != NULL) {
+                    free(pathfinder->matrix[y][x].children);
                 }
             }
             free(pathfinder->matrix[y]);
