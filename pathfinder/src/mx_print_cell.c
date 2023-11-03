@@ -56,3 +56,4 @@ void mx_print_cell(t_cell cell, char **islands, t_cell **matrix) {
         free(allPaths[i]);
     free(allPaths);
 }
+

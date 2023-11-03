@@ -19,6 +19,5 @@ void mx_add_path(t_pathfinder *pathfinder, char *island1, char *island2, char *d
 
     pathfinder->paths = new_paths;
     pathfinder->paths[pathfinder->paths_count - 1] = new_path;
-
 }
 

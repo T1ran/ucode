@@ -30,6 +30,5 @@ char *mx_read_data(char *file) {
     close(fd);
 
     return data;
-
 }
 
