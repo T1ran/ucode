@@ -24,6 +24,7 @@ typedef struct s_pathfinder {
 void mx_print_error(char *text);
 int mx_isalpha(char c);
 int mx_read_till(char **data, char *store, char end, int (*f)(char));
+long mx_atoi(const char *number);
 
 void mx_pathfinder(int argc, char** argv);
 
